@@ -18,22 +18,22 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/list', function(req, res, next) {
-
+  res.status(200);
 });
 
 router.get('/list/query', function(req, res, next) {
-
+  res.status(200);
 });
 
 router.get('/house', function(req, res, next) {
-
+  res.status(200);
 });
 
 router.put('/house', function(req, res, next) {
-
+  res.status(200);
 });
 
 router.get('/metrics', function(req, res, next) {
-
+  res.status(200);
 });
 module.exports = router;
