@@ -4,7 +4,6 @@
 --Drop table(s) before making
 
 DROP TABLE APPRAISAL;
-DROP SYNONYM APP;
 
 CREATE TABLE APPRAISAL(
       ID                      INT          NOT NULL,
@@ -15,7 +14,5 @@ CREATE TABLE APPRAISAL(
       BORROWER                VARCHAR(255) NOT NULL,
       OWNER_OF_PUBLIC_RECORD  VARCHAR(255) NOT NULL,
       COUNTY                  VARCHAR(255) NOT NULL,
-
-)
-
-CREATE SYNONYM APP FOR APPRAISAL;
+      PRIMARY KEY (ID)
+);
