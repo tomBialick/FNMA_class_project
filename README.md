@@ -11,6 +11,7 @@ Make sure you have set up everything
   * Such as postgresql (database, user, user roles, and table)
   * Run npm install (to verify all dependencies are installed)  
   * config.json values are not default (host_info, database)  
+  * change the start_server.sh file to be set for the right OS
 
 
 ## Running
