@@ -8,5 +8,8 @@ Make sure you have set up everything
 
 
 ###Running
+Verify the postgreSQL database is running with:
+  $ sudo service postgresql start
+
 In the FNMA_class_project directory, run:
   $ .start_server.sh
