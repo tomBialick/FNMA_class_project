@@ -3,11 +3,58 @@
 <head>
   <title>Clippy</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <script>
+    window.onload=function(){
+
+      document.getElementById("demo-house-submit").addEventListener("click", function () {
+        var form = document.getElementById("demo-house-form");
+
+        /*var array = $(form).serializeArray();
+        var data = {};
+        $.each(array, function() {
+          data[this.name] = this.value || '';
+        });*/
+        var data = {
+          'address': document.getElementById('demo-address').value,
+          'city': document.getElementById('demo-city').value,
+          'state': document.getElementById('demo-state').value,
+          'zip': document.getElementById('demo-zip').value,
+          'borrow': document.getElementById('demo-borrow').value,
+          'owner_of_record': document.getElementById('demo-owner_of_record').value,
+          'county': document.getElementById('demo-county').value
+        }
+        var data_json = JSON.stringify(data)
+
+        //CHANGE THIS ON AWS!!!!
+        fetch('http://localhost:3000/house/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: data_json
+        }).then(response => response.json())
+      })
+    }
+  </script>
 </head>
 
 <body>
   <h1>Clippy</h1>
   <p>Looks like you are trying to reach an unfinished page. Would you like some help?</p>
+
+  <h4>Demo House Form</h4>
+  <form id="demo-house-form">
+    Address <input id="demo-address" name="address" type="text"><br>
+    City <input id="demo-city" name="city" type="text"><br>
+    State <input id="demo-state" name="state" type="text"><br>
+    Zip Code <input id="demo-zip" name="zip" type="text"><br>
+    Borrower <input id="demo-borrow" name="borrow" type="text"><br>
+    Owner Of Public Record <input id="demo-owner_of_record" name="owner_of_record" type="text"><br>
+    County <input id="demo-county" name="county" type="text"></intput><br>
+
+    <button id="demo-house-submit">submit</button>
+  </form>
 </body>
 
 </html>

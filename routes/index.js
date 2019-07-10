@@ -3,29 +3,19 @@ var router = express.Router();
 
 let conf_data = require('../config.json');
 
-const { Client } = require('pg');
-const client = new Client({
+const promise = require('bluebird');
+const initOptions = {
+    promiseLib: promise
+};
+
+const pgp = require('pg-promise')(initOptions);
+const db = pgp({
   user: conf_data["database"]["username"],
   host: conf_data["database"]["host"],
   database: conf_data["database"]["db"],
-  password: conf_data["database"]["password"],
+  //password: conf_data["database"]["password"],
   port: conf_data["database"]["port"],
 });
-
-//Get the next file id
-var file_id;
-client.query( 'SELECT * FROM APPRAISAL ORDER BY ID DESC', (error, results) => {
-  if (error) {
-    throw error;
-  }
-  if (!results.rows[0]) {
-    file_id = 1;
-  }
-  else {
-    file_id = results.rows[0].id;
-  }
-});
-
 
 
 /* GET home page. */
@@ -41,26 +31,42 @@ router.get('/list/query', function(req, res, next) {
   res.status(200);
 });
 
-router.get('/house', function(req, res, next) {
-  
+router.get('/houseform', function(req, res, next) {
+
   res.status(200);
 });
 
-router.put('/house', function(req, res, next) {
-  let address = res.body.address;
-  let city = res.body.city;
-  let state = res.body.state;
-  let zipcode = res.body.zip;
-  let borrower = res.body.borrow;
-  let owner_of_record = res.body.owner_of_record;
-  let county = res.body.county;
-
-  client.query( 'INSERT INTO APPRAISAL (ID, PROPERTY_ADDRESS, CITY, STATE, ZIP_CODE, BORROWER, OWNER_OF_PUBLIC_RECORD, COUNTY) VALUES ($1, $2, $3, $4, $5, $6, $7)', [file_id, address, city, state, zipcode, borrower, owner_of_record, county], (error, results) => {
-    if (error) {
-      throw error;
+router.post('/house', function(req, res, next) {
+  //Get the next file id
+  var file_id;
+  db.query( 'SELECT * FROM APPRAISAL ORDER BY ID DESC').then(results => {
+    console.log(results)
+    if (!results[0]) {
+      file_id = 1;
+      console.log("File id is " + file_id)
     }
-    res.status(200);
-  });
+    else {
+      file_id = results[0].id + 1;
+      console.log("File id is " + file_id)
+    }
+    let address = req.body.address;
+    let city = req.body.city;
+    let state = req.body.state;
+    let zipcode = req.body.zip;
+    let borrower = req.body.borrow;
+    let owner_of_record = req.body.owner_of_record;
+    let county = req.body.county;
+
+    db.query( 'INSERT INTO APPRAISAL (ID, PROPERTY_ADDRESS, CITY, STATE, ZIP_CODE, BORROWER, OWNER_OF_PUBLIC_RECORD, COUNTY) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [file_id, address, city, state, zipcode, borrower, owner_of_record, county]).then(results => {
+      res.status(200);
+    }).catch(error => {
+      console.log('ERROR:', error);
+    })
+  }).catch(error => {
+    console.log('ERROR:', error);
+  })
+
+  //console.log(req.body)
 });
 
 router.get('/metrics', function(req, res, next) {
