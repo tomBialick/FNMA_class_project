@@ -25,10 +25,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/list', function(req, res, next) {
   db.query( 'SELECT * FROM APPRAISAL ORDER BY ID ASC').then(results => {
-    console.log(results)
     res.status(200).send(results)
   }).catch(error => {
     console.log('ERROR:', error);
+    res.status(400).send({"Bad Request"});
   })
 //  res.status(200);
 });
@@ -46,14 +46,11 @@ router.post('/house', function(req, res, next) {
   //Get the next file id
   var file_id;
   db.query( 'SELECT * FROM APPRAISAL ORDER BY ID DESC').then(results => {
-    console.log(results)
     if (!results[0]) {
       file_id = 1;
-      console.log("File id is " + file_id)
     }
     else {
       file_id = results[0].id + 1;
-      console.log("File id is " + file_id)
     }
     let address = req.body.address;
     let city = req.body.city;
@@ -67,12 +64,12 @@ router.post('/house', function(req, res, next) {
       res.status(200).send({"Appraisal form successully added"});;
     }).catch(error => {
       console.log('ERROR:', error);
+      res.status(400).send({"Bad Request"});
     })
   }).catch(error => {
     console.log('ERROR:', error);
+    res.status(500).send({"Issue Connecting to Database"});
   })
-
-  //console.log(req.body)
 });
 
 router.get('/metrics', function(req, res, next) {
