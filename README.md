@@ -8,9 +8,9 @@ Members:
 
 ## Before you run
 Make sure you have set up everything  
-  * Such as postgresql (both the database, user, user roles, and table)
-  * Run npm install  
-  * config.json values are not default  
+  * Such as postgresql (database, user, user roles, and table)
+  * Run npm install (to verify all dependencies are installed)  
+  * config.json values are not default (host_info, database)  
 
 
 ## Running
