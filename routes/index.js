@@ -24,7 +24,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/list', function(req, res, next) {
-  res.status(200);
+  db.query( 'SELECT * FROM APPRAISAL ORDER BY ID ASC').then(results => {
+    console.log(results)
+    res.status(200).send(results)
+  }).catch(error => {
+    console.log('ERROR:', error);
+  })
+//  res.status(200);
 });
 
 router.get('/list/query', function(req, res, next) {
