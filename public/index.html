@@ -6,7 +6,8 @@
 
   <script>
     window.onload=function(){
-
+      let conf_data = require('../config.json');
+      var hosturl = conf_data["host_info"]["hostname"]+conf_data["host_info"]["port"]
       document.getElementById("demo-house-submit").addEventListener("click", function () {
         var form = document.getElementById("demo-house-form");
 
@@ -27,7 +28,7 @@
         var data_json = JSON.stringify(data)
 
         //CHANGE THIS ON AWS!!!!
-        fetch('http://localhost:3000/house/', {
+        fetch( hosturl + '/house/', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -37,7 +38,7 @@
       })
 
       document.getElementById("demo-getappraisals").addEventListener("click", function () {
-        fetch('http://localhost:3000/list', {
+        fetch( hosturl + '/list', {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',

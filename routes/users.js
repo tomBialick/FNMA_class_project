@@ -9,11 +9,11 @@ router.get('/', function(req, res, next) {
 */
 
 router.put('/create', function(req, res, next) {
-
+  res.status(200).send({"Ok"});;
 });
 
 router.get('/verify', function(req, res, next) {
-
+  res.status(200).send({"Ok"});;
 });
 
 module.exports = router;

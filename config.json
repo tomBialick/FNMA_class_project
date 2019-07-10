@@ -1,4 +1,8 @@
 {
+  "host_info": {
+    "hostname": "http://localhost:",
+    "port": "3000",
+  }
   "database" : {
     "host": "localhost",
     "db": "mydb",
