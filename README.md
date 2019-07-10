@@ -1,5 +1,5 @@
 # FNMA_class_project
-This is the Team Clippy solution to the class project
+This is the Team Clippy solution to the class project  
 Members:  
   * Thomas Bialick  
   * Shannon Darroch  
