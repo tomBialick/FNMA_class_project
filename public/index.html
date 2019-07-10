@@ -9,31 +9,27 @@
       //CHANGE THIS ON AWS!!!!
       var hosturl = 'http://localhost:3000'
       document.getElementById("demo-house-submit").addEventListener("click", function () {
-        var form = document.getElementById("demo-house-form");
 
-        /*var array = $(form).serializeArray();
-        var data = {};
-        $.each(array, function() {
-          data[this.name] = this.value || '';
-        });*/
         var data = {
-          'address': document.getElementById('demo-address').value,
-          'city': document.getElementById('demo-city').value,
-          'state': document.getElementById('demo-state').value,
-          'zip': document.getElementById('demo-zip').value,
-          'borrow': document.getElementById('demo-borrow').value,
-          'owner_of_record': document.getElementById('demo-owner_of_record').value,
-          'county': document.getElementById('demo-county').value
+          "address": document.getElementById('demo-address').value,
+          "city": document.getElementById('demo-city').value,
+          "state": document.getElementById('demo-state').value,
+          "zip": document.getElementById('demo-zip').value,
+          "borrow": document.getElementById('demo-borrow').value,
+          "owner_of_record": document.getElementById('demo-owner_of_record').value,
+          "county": document.getElementById('demo-county').value
         }
         var data_json = JSON.stringify(data)
 
-        fetch( hosturl + '/house/', {
+        fetch( hosturl + '/house', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
           },
           body: data_json
-        }).then(response => response.json())
+        }).then(response => {
+          location.reload();
+        })
       })
 
       document.getElementById("demo-getappraisals").addEventListener("click", function () {
@@ -77,17 +73,18 @@
 
   <h4>Demo House Form</h4>
   <form id="demo-house-form">
-    Address <input id="demo-address" name="address" type="text"><br>
-    City <input id="demo-city" name="city" type="text"><br>
-    State <input id="demo-state" name="state" type="text"><br>
-    Zip Code <input id="demo-zip" name="zip" type="text"><br>
-    Borrower <input id="demo-borrow" name="borrow" type="text"><br>
-    Owner Of Public Record <input id="demo-owner_of_record" name="owner_of_record" type="text"><br>
-    County <input id="demo-county" name="county" type="text"></intput><br>
+    Address <input id="demo-address" type="text"><br>
+    City <input id="demo-city" type="text"><br>
+    State <input id="demo-state" type="text"><br>
+    Zip Code <input id="demo-zip" type="text"><br>
+    Borrower <input id="demo-borrow" type="text"><br>
+    Owner Of Public Record <input id="demo-owner_of_record" type="text"><br>
+    County <input id="demo-county" type="text"></intput><br>
 
     <button id="demo-house-submit">submit</button>
   </form>
-  <button id="demo-getappraisals">Get Appraisals</button>
+  <h5>Too add another record after listing all Appraisals, refresh the page</h5>
+  <button id="demo-getappraisals">Get Appraisals</button><br>
 </body>
 
 </html>
