@@ -16,4 +16,4 @@ Make sure you have set up everything
 
 ## Running
 In the FNMA_class_project directory, run:  
- `$ .start_server.sh`  
+ `$ ./start_server.sh`  
