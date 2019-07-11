@@ -67,13 +67,15 @@ should be in JSON of the format:
 It is a GET request using the route `/list`. The returned body should be in JSON
 of the format:  
 ```JSON
-{
-  "address": "<Content>",
-  "city": "<Content>",
-  "state": "<Content>",
-  "zip": "<Content>",
-  "borrow": "<Content>",
-  "owner_of_record": "<Content>",
-  "county": "<Content>"
-}
+[
+  {
+    "address": "<Content>",
+    "city": "<Content>",
+    "state": "<Content>",
+    "zip": "<Content>",
+    "borrow": "<Content>",
+    "owner_of_record": "<Content>",
+    "county": "<Content>"
+  }
+]
 ```
