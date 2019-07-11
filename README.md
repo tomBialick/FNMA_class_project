@@ -21,7 +21,7 @@ In the FNMA_class_project directory, run:
 
 ### API
 Networking with this app is recommended to be done using fetch through
-RESTful calls. See below for
+RESTful calls. See below for examples and a routing list of implemented methods
 
 ##### Example
 ```javascript
@@ -47,3 +47,33 @@ fetch( hosturl + '/house', {
 })
 ```
 Both examples are taken from FNMA_class_project/public/index.html
+
+#### Adding an Appraisal
+It is a POST request using the route `/house`. The body given in the request
+should be in JSON of the format:  
+```JSON
+{
+  "address": "<Content>",
+  "city": "<Content>",
+  "state": "<Content>",
+  "zip": "<Content>",
+  "borrow": "<Content>",
+  "owner_of_record": "<Content>",
+  "county": "<Content>"
+}
+```
+
+#### Getting a list of all Appraisals
+It is a GET request using the route `/list`. The returned body should be in JSON
+of the format:  
+```JSON
+{
+  "address": "<Content>",
+  "city": "<Content>",
+  "state": "<Content>",
+  "zip": "<Content>",
+  "borrow": "<Content>",
+  "owner_of_record": "<Content>",
+  "county": "<Content>"
+}
+```
