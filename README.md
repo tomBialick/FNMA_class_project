@@ -19,7 +19,7 @@ In the FNMA_class_project directory, run:
  `$ ./start_server.sh`  
 
 
-### API
+## API
 Networking with this app is recommended to be done using fetch through
 RESTful calls. See below for examples and a routing list of implemented methods
 
@@ -48,7 +48,7 @@ fetch( hosturl + '/house', {
 ```
 Both examples are taken from FNMA_class_project/public/index.html
 
-#### Adding an Appraisal
+### Adding an Appraisal
 It is a POST request using the route `/house`. The body given in the request
 should be in JSON of the format:  
 ```JSON
@@ -63,7 +63,7 @@ should be in JSON of the format:
 }
 ```
 
-#### Getting a list of all Appraisals
+### Getting a list of all Appraisals
 It is a GET request using the route `/list`. The returned body should be in JSON
 of the format:  
 ```JSON
