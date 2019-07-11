@@ -17,3 +17,33 @@ Make sure you have set up everything
 ## Running
 In the FNMA_class_project directory, run:  
  `$ ./start_server.sh`  
+
+
+### API
+Networking with this app is recommended to be done using fetch through
+RESTful calls. See below for
+
+##### Example
+```javascript
+fetch( hosturl + '/list', {
+  method: 'GET',
+  headers: {
+      'Content-Type': 'application/json',
+  }
+}).then(response => response.json()).then((responseJson) => {
+```
+For a POST request with a body
+```javascript
+var data_json = JSON.stringify(data)
+
+fetch( hosturl + '/house', {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json',
+  },
+  body: data_json
+}).then(response => {
+  location.reload();
+})
+```
+Both examples are taken from FNMA_class_project/public/index.html
