@@ -12,6 +12,7 @@ Make sure you have set up everything
   * Run npm install (to verify all dependencies are installed)  
   * config.json values are not default (host_info, database)  
   * change the start_server.sh file to be set for the right OS
+  * change line 10 in public/index.html to reflect the correct host url
 
 
 ## Running
@@ -65,7 +66,8 @@ should be in JSON of the format:
 
 ### Getting a list of all Appraisals
 It is a GET request using the route `/list`. The returned body should be in JSON
-of the format:  
+of the format (Note: for example purposes, the id field has the value -1, but should
+never be less than 1 when running this application):  
 ```JSON
 [
   {
@@ -79,4 +81,33 @@ of the format:
     "county": "<Content>"
   }
 ]
+```
+
+### Updating an Appraisal
+It is a POST request using the route `/house/update`. The id is used to identify
+which appraisal is to be updated. The body given in the request should be in JSON
+of the format (Note: for example purposes, the id field has the value -1, but
+should never be less than 1 when running this application):  
+```JSON
+{
+  "id": -1,
+  "address": "<Content>",
+  "city": "<Content>",
+  "state": "<Content>",
+  "zip": "<Content>",
+  "borrow": "<Content>",
+  "owner_of_record": "<Content>",
+  "county": "<Content>"
+}
+```
+
+### Deleting an Appraisal
+It is a POST request using the route `/house/update`. The id is used to identify
+which appraisal is to be deleted. The body given in the request should be in JSON
+of the format (Note: for example purposes, the id field has the value -1, but
+should never be less than 1 when running this application):  
+```JSON
+{
+  "id": -1,
+}
 ```

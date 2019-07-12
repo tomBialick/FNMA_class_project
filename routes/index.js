@@ -143,7 +143,7 @@ router.post('/house/update', function(req, res, next) {
   let owner_of_record = req.body.owner_of_record;
   let county = req.body.county;
 
-  db.query( 'UPDATE APPRAISAL SET ID = $1, PROPERTY_ADDRESS = $2, CITY = $3, STATE = $4, ZIP_CODE = $5, BORROWER = $6, OWNER_OF_PUBLIC_RECORD = $7, COUNTY = $8', [file_id, address, city, state, zipcode, borrower, owner_of_record, county]).then(results => {
+  db.query( 'UPDATE APPRAISAL SET PROPERTY_ADDRESS = $2, CITY = $3, STATE = $4, ZIP_CODE = $5, BORROWER = $6, OWNER_OF_PUBLIC_RECORD = $7, COUNTY = $8 WHERE ID = $1', [file_id, address, city, state, zipcode, borrower, owner_of_record, county]).then(results => {
     res.status(200).send("Appraisal form successully updated");
   }).catch(error => {
     console.log('ERROR:', error);
@@ -151,7 +151,16 @@ router.post('/house/update', function(req, res, next) {
   })
 });
 
-
+/* DELETE an Appraisal */
+router.delete('/house/delete', function(req, res, next) {
+  let file_id = req.body.id;
+  db.query( 'DELETE FROM APPRAISAL WHERE ID = $1', [file_id]).then(results => {
+    res.status(200).send("Appraisal successully deleted");
+  }).catch(error => {
+    console.log('ERROR:', error);
+    res.status(400).send("Bad Request");
+  })
+});
 
 router.get('/metrics', function(req, res, next) {
   res.status(200).send("Ok");

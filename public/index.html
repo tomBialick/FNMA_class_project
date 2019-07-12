@@ -32,6 +32,50 @@
         })
       })
 
+
+      document.getElementById("demo-house-update").addEventListener("click", function () {
+
+        var data = {
+          "id": document.getElementById('demo-update-id').value,
+          "address": document.getElementById('demo-update-address').value,
+          "city": document.getElementById('demo-update-city').value,
+          "state": document.getElementById('demo-update-state').value,
+          "zip": document.getElementById('demo-update-zip').value,
+          "borrow": document.getElementById('demo-update-borrow').value,
+          "owner_of_record": document.getElementById('demo-update-owner_of_record').value,
+          "county": document.getElementById('demo-update-county').value
+        }
+        var data_json = JSON.stringify(data)
+
+        fetch( hosturl + '/house/update', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: data_json
+        }).then(response => {
+          location.reload();
+        })
+      })
+
+      document.getElementById("demo-house-delete").addEventListener("click", function () {
+
+        var data = {
+          "id": document.getElementById('demo-delete-id').value,
+        }
+        var data_json = JSON.stringify(data)
+
+        fetch( hosturl + '/house/delete', {
+          method: 'DELETE',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: data_json
+        }).then(response => {
+          location.reload();
+        })
+      })
+
       document.getElementById("demo-getappraisals").addEventListener("click", function () {
         fetch( hosturl + '/list', {
           method: 'GET',
@@ -83,6 +127,26 @@
 
     <button id="demo-house-submit">submit</button>
   </form>
+
+  <h4>Demo Update Form</h4>
+  <form id="demo-house-update-form">
+    ID <input id="demo-update-id" type="text"><br>
+    Address <input id="demo-update-address" type="text"><br>
+    City <input id="demo-update-city" type="text"><br>
+    State <input id="demo-update-state" type="text"><br>
+    Zip Code <input id="demo-update-zip" type="text"><br>
+    Borrower <input id="demo-update-borrow" type="text"><br>
+    Owner Of Public Record <input id="demo-update-owner_of_record" type="text"><br>
+    County <input id="demo-update-county" type="text"></intput><br>
+    <button id="demo-house-update">update</button>
+  </form>
+
+  <h4>Demo Delete Form</h4>
+  <form id="demo-house-delete-form">
+    ID <input id="demo-delete-id" type="text"><br>
+    <button id="demo-house-delete">delete</button>
+  </form>
+
   <h5>Too add another record after listing all Appraisals, refresh the page</h5>
   <button id="demo-getappraisals">Get Appraisals</button><br>
 </body>
