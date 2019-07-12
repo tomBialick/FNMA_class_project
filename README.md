@@ -23,7 +23,7 @@ In the FNMA_class_project directory, run:
 Networking with this app is recommended to be done using fetch through
 RESTful calls. See below for examples and a routing list of implemented methods
 
-##### Example
+##### Examples
 ```javascript
 fetch( hosturl + '/list', {
   method: 'GET',
@@ -69,6 +69,7 @@ of the format:
 ```JSON
 [
   {
+    "id": <number>,
     "address": "<Content>",
     "city": "<Content>",
     "state": "<Content>",

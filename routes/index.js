@@ -13,7 +13,7 @@ const db = pgp({
   user: conf_data["database"]["username"],
   host: conf_data["database"]["host"],
   database: conf_data["database"]["db"],
-  //password: conf_data["database"]["password"],
+  password: conf_data["database"]["password"],
   port: conf_data["database"]["port"],
 });
 

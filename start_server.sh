@@ -78,6 +78,6 @@ npm start
 # Keep this uncommented
 echo ""
 echo -e "${RED}===================================================================${NC}"
-echo -e "${RED}If you can read this, something probably failed...${NC}"
+echo -e "${RED}If you can read this, something probably failed (Unless you manually stopped it)...${NC}"
 echo -e "${RED}===================================================================${NC}"
 echo ""
