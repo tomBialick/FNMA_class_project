@@ -69,7 +69,7 @@ of the format:
 ```JSON
 [
   {
-    "id": <number>,
+    "id": -1,
     "address": "<Content>",
     "city": "<Content>",
     "state": "<Content>",
