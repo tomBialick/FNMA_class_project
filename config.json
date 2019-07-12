@@ -1,6 +1,7 @@
 {
   "host_info": {
     "hostname": "http://localhost:",
+    "aws_hostname": "http://ec2-54-89-250-141.compute-1.amazonaws.com:",
     "port": "3000"
   },
   "database" : {
@@ -9,5 +10,9 @@
     "username": "myuser",
     "password": "",
     "port": "5432"
+
+    "_host": "ec2-54-89-250-141.compute-1.amazonaws.com",
+    "_db": "ec2-user",
+    "_username": "ec2-user",
   }
 }
