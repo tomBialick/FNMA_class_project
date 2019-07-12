@@ -102,7 +102,7 @@ should never be less than 1 when running this application):
 ```
 
 ### Deleting an Appraisal
-It is a POST request using the route `/house/update`. The id is used to identify
+It is a DELETE request using the route `/house/delete`. The id is used to identify
 which appraisal is to be deleted. The body given in the request should be in JSON
 of the format (Note: for example purposes, the id field has the value -1, but
 should never be less than 1 when running this application):  
