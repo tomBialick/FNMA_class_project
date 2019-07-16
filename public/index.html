@@ -12,13 +12,31 @@
       document.getElementById("demo-house-submit").addEventListener("click", function () {
 
         var data = {
-          "address": document.getElementById('demo-address').value,
+          "property_address": document.getElementById('demo-address').value,
           "city": document.getElementById('demo-city').value,
           "state": document.getElementById('demo-state').value,
-          "zip": document.getElementById('demo-zip').value,
-          "borrow": document.getElementById('demo-borrow').value,
+          "zip_code": document.getElementById('demo-zip').value,
+          "borrower": document.getElementById('demo-borrow').value,
           "owner_of_record": document.getElementById('demo-owner_of_record').value,
-          "county": document.getElementById('demo-county').value
+          "county": document.getElementById('demo-county').value,
+          "legal_desc": document.getElementById('demo-legal_desc').value,
+          "assess_par_num": document.getElementById('demo-assess_par_num').value,
+          "tax_year": document.getElementById('demo-tax_year').value,
+          "r_e_taxes": document.getElementById('demo-r_e_taxes').value,
+          "neighborhood": document.getElementById('demo-neighborhood').value,
+          "map_ref": document.getElementById('demo-map_ref').value,
+          "census_tract": document.getElementById('demo-census_tract').value,
+          "occupant": document.getElementById('demo-occupant').value,
+          "spec_assess": document.getElementById('demo-spec_assess').value,
+          "pud": document.getElementById('demo-pud').value,
+          "hoa_dues": document.getElementById('demo-hoa_dues').value,
+          "hoa_freq": document.getElementById('demo-hoa_freq').value,
+          "prop_rights_appr": document.getElementById('demo-prop_rights_appr').value,
+          "assign_type": document.getElementById('demo-assign_type').value,
+          "lender_client": document.getElementById('demo-lender_client').value,
+          "l_c_address": document.getElementById('demo-l_c_address').value,
+          "for_sale": document.getElementById('demo-for_sale').value,
+          "data_sources": document.getElementById('demo-data_sources').value
         }
         var data_json = JSON.stringify(data)
 
@@ -38,13 +56,31 @@
 
         var data = {
           "id": document.getElementById('demo-update-id').value,
-          "address": document.getElementById('demo-update-address').value,
+          "property_address": document.getElementById('demo-update-address').value,
           "city": document.getElementById('demo-update-city').value,
           "state": document.getElementById('demo-update-state').value,
-          "zip": document.getElementById('demo-update-zip').value,
-          "borrow": document.getElementById('demo-update-borrow').value,
+          "zip_code": document.getElementById('demo-update-zip').value,
+          "borrower": document.getElementById('demo-update-borrow').value,
           "owner_of_record": document.getElementById('demo-update-owner_of_record').value,
-          "county": document.getElementById('demo-update-county').value
+          "county": document.getElementById('demo-update-county').value,
+          "legal_desc": document.getElementById('demo-update-legal_desc').value,
+          "assess_par_num": document.getElementById('demo-update-assess_par_num').value,
+          "tax_year": document.getElementById('demo-update-tax_year').value,
+          "r_e_taxes": document.getElementById('demo-update-r_e_taxes').value,
+          "neighborhood": document.getElementById('demo-update-neighborhood').value,
+          "map_ref": document.getElementById('demo-update-map_ref').value,
+          "census_tract": document.getElementById('demo-update-census_tract').value,
+          "occupant": document.getElementById('demo-update-occupant').value,
+          "spec_assess": document.getElementById('demo-update-spec_assess').value,
+          "pud": document.getElementById('demo-update-pud').value,
+          "hoa_dues": document.getElementById('demo-update-hoa_dues').value,
+          "hoa_freq": document.getElementById('demo-update-hoa_freq').value,
+          "prop_rights_appr": document.getElementById('demo-update-prop_rights_appr').value,
+          "assign_type": document.getElementById('demo-update-assign_type').value,
+          "lender_client": document.getElementById('demo-update-lender_client').value,
+          "l_c_address": document.getElementById('demo-update-l_c_address').value,
+          "for_sale": document.getElementById('demo-update-for_sale').value,
+          "data_sources": document.getElementById('demo-update-data_sources').value
         }
         var data_json = JSON.stringify(data)
 
@@ -157,7 +193,24 @@
     Borrower <input id="demo-borrow" type="text"><br>
     Owner Of Public Record <input id="demo-owner_of_record" type="text"><br>
     County <input id="demo-county" type="text"></intput><br>
-
+    Legal Description <input id="demo-legal_desc" type="text"></intput><br>
+    Assessor's Parcel Number <input id="demo-assess_par_num" type="text"></intput><br>
+    Tax Year <input id="demo-tax_year" type="text"></intput><br>
+    R.E. Taxes <input id="demo-r_e_taxes" type="text"></intput><br>
+    Neighborhood Name <input id="demo-neighborhood" type="text"></intput><br>
+    Map Reference <input id="demo-map_ref" type="text"></intput><br>
+    Census Tract <input id="demo-census_tract" type="text"></intput><br>
+    Occupant <input id="demo-occupant" type="text"></intput><br>
+    Special Assessments $<input id="demo-spec_assess" type="text"></intput><br>
+    PUD <input id="demo-pud" type="text"></intput><br>
+    HOA $<input id="demo-hoa_dues" type="text"></intput><br>
+    HOA Frequency <input id="demo-hoa_freq" type="text"></intput><br>
+    Property Rights Appraised <input id="demo-prop_rights_appr" type="text"></intput><br>
+    Assignment Type <input id="demo-assign_type" type="text"></intput><br>
+    Lender/Client <input id="demo-lender_client" type="text"></intput><br>
+    Lender/Client Address <input id="demo-l_c_address" type="text"></intput><br>
+    For Sale <input id="demo-for_sale" type="text"></intput><br>
+    Data Sources <input id="demo-data_sources" type="text"></intput><br>
     <button id="demo-house-submit">Submit</button>
   </form>
 
@@ -171,6 +224,24 @@
     Borrower <input id="demo-update-borrow" type="text"><br>
     Owner Of Public Record <input id="demo-update-owner_of_record" type="text"><br>
     County <input id="demo-update-county" type="text"></intput><br>
+    Legal Description <input id="demo-update-legal_desc" type="text"></intput><br>
+    Assessor's Parcel Number <input id="demo-update-assess_par_num" type="text"></intput><br>
+    Tax Year <input id="demo-update-tax_year" type="text"></intput><br>
+    R.E. Taxes <input id="demo-update-r_e_taxes" type="text"></intput><br>
+    Neighborhood Name <input id="demo-update-neighborhood" type="text"></intput><br>
+    Map Reference <input id="demo-update-map_ref" type="text"></intput><br>
+    Census Tract <input id="demo-update-census_tract" type="text"></intput><br>
+    Occupant <input id="demo-update-occupant" type="text"></intput><br>
+    Special Assessments $<input id="demo-update-spec_assess" type="text"></intput><br>
+    PUD <input id="demo-update-pud" type="text"></intput><br>
+    HOA $<input id="demo-update-hoa_dues" type="text"></intput><br>
+    HOA Frequency <input id="demo-update-hoa_freq" type="text"></intput><br>
+    Property Rights Appraised <input id="demo-update-prop_rights_appr" type="text"></intput><br>
+    Assignment Type <input id="demo-update-assign_type" type="text"></intput><br>
+    Lender/Client <input id="demo-update-lender_client" type="text"></intput><br>
+    Lender/Client Address <input id="demo-update-l_c_address" type="text"></intput><br>
+    For Sale <input id="demo-update-for_sale" type="text"></intput><br>
+    Data Sources <input id="demo-update-data_sources" type="text"></intput><br>
     <button id="demo-house-update">Update</button>
   </form>
 

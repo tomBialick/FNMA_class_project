@@ -113,11 +113,11 @@ router.post('/house', function(req, res, next) {
       file_id = results[0].id + 1;
     }
 
-    let address = req.body.address? req.body.address: "";
+    let address = req.body.property_address? req.body.property_address: "";
     let city = req.body.city? req.body.city: "";
     let state = req.body.state? req.body.state: "";
-    let zipcode = req.body.zip? req.body.zip: "";
-    let borrower = req.body.borrow? req.body.borrow: "";
+    let zipcode = req.body.zip_code? req.body.zip_code: "";
+    let borrower = req.body.borrower? req.body.borrower: "";
     let owner_of_record = req.body.owner_of_record? req.body.owner_of_record: "";
     let county = req.body.county? req.body.county: "";
     let legal_desc = req.body.legal_desc? req.body.legal_desc: "";
@@ -154,11 +154,11 @@ router.post('/house', function(req, res, next) {
 /* POST an updated Appraisal */
 router.post('/house/update', function(req, res, next) {
 
-  let address = req.body.address? req.body.address: "";
+  let property_address = req.body.property_address? req.body.property_address: "";
   let city = req.body.city? req.body.city: "";
   let state = req.body.state? req.body.state: "";
-  let zipcode = req.body.zip? req.body.zip: "";
-  let borrower = req.body.borrow? req.body.borrow: "";
+  let zipcode = req.body.zip_code? req.body.zip_code: "";
+  let borrower = req.body.borrower? req.body.borrower: "";
   let owner_of_record = req.body.owner_of_record? req.body.owner_of_record: "";
   let county = req.body.county? req.body.county: "";
   let legal_desc = req.body.legal_desc? req.body.legal_desc: "";
