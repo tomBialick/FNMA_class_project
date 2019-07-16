@@ -112,15 +112,34 @@ router.post('/house', function(req, res, next) {
     else {
       file_id = results[0].id + 1;
     }
-    let address = req.body.address;
-    let city = req.body.city;
-    let state = req.body.state;
-    let zipcode = req.body.zip;
-    let borrower = req.body.borrow;
-    let owner_of_record = req.body.owner_of_record;
-    let county = req.body.county;
 
-    db.query( 'INSERT INTO APPRAISAL (ID, PROPERTY_ADDRESS, CITY, STATE, ZIP_CODE, BORROWER, OWNER_OF_PUBLIC_RECORD, COUNTY) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [file_id, address, city, state, zipcode, borrower, owner_of_record, county]).then(results => {
+    let address = req.body.address? req.body.address: "";
+    let city = req.body.city? req.body.city: "";
+    let state = req.body.state? req.body.state: "";
+    let zipcode = req.body.zip? req.body.zip: "";
+    let borrower = req.body.borrow? req.body.borrow: "";
+    let owner_of_record = req.body.owner_of_record? req.body.owner_of_record: "";
+    let county = req.body.county? req.body.county: "";
+    let legal_desc = req.body.legal_desc? req.body.legal_desc: "";
+    let assess_par_num = req.body.assess_par_num? req.body.assess_par_num: "";
+    let tax_year = req.body.tax_year? req.body.tax_year: "";
+    let r_e_taxes = req.body.r_e_taxes? req.body.r_e_taxes: "";
+    let neighborhood = req.body.neighborhood? req.body.neighborhood: "";
+    let map_ref = req.body.map_ref? req.body.map_ref: "";
+    let census_tract = req.body.census_tract? req.body.census_tract: "";
+    let occupant = req.body.occupant? req.body.occupant: "";
+    let spec_assess = req.body.spec_assess? req.body.spec_assess: "";
+    let pud = req.body.pud? req.body.pud: "";
+    let hoa_dues = req.body.hoa_dues? req.body.hoa_dues: "";
+    let hoa_freq = req.body.hoa_freq? req.body.hoa_freq: "";
+    let prop_rights_assess = req.body.prop_rights_assess? req.body.prop_rights_assess: "";
+    let assign_type = req.body.assign_type? req.body.assign_type: "";
+    let lender_client = req.body.lender_client? req.body.lender_client: "";
+    let l_c_address = req.body.l_c_address? req.body.l_c_address: "";
+    let for_sale = req.body.for_sale? req.body.for_sale: "";
+    let data_sources = req.body.data_sources? req.body.data_sources: "";
+
+    db.query('INSERT INTO APPRAISAL ( ID, PROPERTY_ADDRESS, CITY, STATE, ZIP_CODE, BORROWER, OWNER_OF_PUBLIC_RECORD, COUNTY, LEGAL_DESCRIPTION, ASSESSOR_PARCEL_NUM, TAX_YEAR, R_E_TAXES, NEIGHBORHOOD_NAME, MAP_REFERENCE, CENSUS_TRACT, OCCUPANT, SPECIAL_ASSESSMANTS, PUD, HOA, HOA_PAY_FREQ, PROPERTY_RIGHTS_APPRAISED, ASSIGNMENT_TYPE, LENDER_CLIENT, L_C_ADDRESS, FOR_SALE_YES_NO, REPORT_DATA_SOURCES) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26)', [file_id, address, city, state, zipcode, borrower, owner_of_record, county, legal_desc, assess_par_num, tax_year, r_e_taxes, neighborhood, map_ref, census_tract, occupant, spec_assess, pud, hoa_dues, hoa_freq, prop_rights_assess, assign_type, lender_client, l_c_address, for_sale, data_sources]).then(results => {
       res.status(200).send("Appraisal form successully added");
     }).catch(error => {
       console.log('ERROR:', error);
@@ -134,16 +153,34 @@ router.post('/house', function(req, res, next) {
 
 /* POST an updated Appraisal */
 router.post('/house/update', function(req, res, next) {
-  let file_id = req.body.id;
-  let address = req.body.address;
-  let city = req.body.city;
-  let state = req.body.state;
-  let zipcode = req.body.zip;
-  let borrower = req.body.borrow;
-  let owner_of_record = req.body.owner_of_record;
-  let county = req.body.county;
 
-  db.query( 'UPDATE APPRAISAL SET PROPERTY_ADDRESS = $2, CITY = $3, STATE = $4, ZIP_CODE = $5, BORROWER = $6, OWNER_OF_PUBLIC_RECORD = $7, COUNTY = $8 WHERE ID = $1', [file_id, address, city, state, zipcode, borrower, owner_of_record, county]).then(results => {
+  let address = req.body.address? req.body.address: "";
+  let city = req.body.city? req.body.city: "";
+  let state = req.body.state? req.body.state: "";
+  let zipcode = req.body.zip? req.body.zip: "";
+  let borrower = req.body.borrow? req.body.borrow: "";
+  let owner_of_record = req.body.owner_of_record? req.body.owner_of_record: "";
+  let county = req.body.county? req.body.county: "";
+  let legal_desc = req.body.legal_desc? req.body.legal_desc: "";
+  let assess_par_num = req.body.assess_par_num? req.body.assess_par_num: "";
+  let tax_year = req.body.tax_year? req.body.tax_year: "";
+  let r_e_taxes = req.body.r_e_taxes? req.body.r_e_taxes: "";
+  let neighborhood = req.body.neighborhood? req.body.neighborhood: "";
+  let map_ref = req.body.map_ref? req.body.map_ref: "";
+  let census_tract = req.body.census_tract? req.body.census_tract: "";
+  let occupant = req.body.occupant? req.body.occupant: "";
+  let spec_assess = req.body.spec_assess? req.body.spec_assess: "";
+  let pud = req.body.pud? req.body.pud: "";
+  let hoa_dues = req.body.hoa_dues? req.body.hoa_dues: "";
+  let hoa_freq = req.body.hoa_freq? req.body.hoa_freq: "";
+  let prop_rights_assess = req.body.prop_rights_assess? req.body.prop_rights_assess: "";
+  let assign_type = req.body.assign_type? req.body.assign_type: "";
+  let lender_client = req.body.lender_client? req.body.lender_client: "";
+  let l_c_address = req.body.l_c_address? req.body.l_c_address: "";
+  let for_sale = req.body.for_sale? req.body.for_sale: "";
+  let data_sources = req.body.data_sources? req.body.data_sources: "";
+
+  db.query( 'UPDATE APPRAISAL SET PROPERTY_ADDRESS = $2, CITY = $3, STATE = $4, ZIP_CODE = $5, BORROWER = $6, OWNER_OF_PUBLIC_RECORD = $7, COUNTY = $8, LEGAL_DESCRIPTION = $9, ASSESSOR_PARCEL_NUM = $10, TAX_YEAR = $11, R_E_TAXES = $12, NEIGHBORHOOD_NAME = $13, MAP_REFERENCE = $14, CENSUS_TRACT = $15, OCCUPANT = $16, SPECIAL_ASSESSMANTS = $17, PUD = $18, HOA = $19, HOA_PAY_FREQ = $20, PROPERTY_RIGHTS_APPRAISED = $21, ASSIGNMENT_TYPE = $22, LENDER_CLIENT = $23, L_C_ADDRESS = $24, FOR_SALE_YES_NO = $25, REPORT_DATA_SOURCES = $26 WHERE ID = $1', [file_id, address, city, state, zipcode, borrower, owner_of_record, county, legal_desc, assess_par_num, tax_year, r_e_taxes, neighborhood, map_ref, census_tract, occupant, spec_assess, pud, hoa_dues, hoa_freq, prop_rights_assess, assign_type, lender_client, l_c_address, for_sale, data_sources]).then(results => {
     res.status(200).send("Appraisal form successully updated");
   }).catch(error => {
     console.log('ERROR:', error);

@@ -54,13 +54,31 @@ It is a POST request using the route `/house`. The body given in the request
 should be in JSON of the format:  
 ```JSON
 {
-  "address": "<Content>",
-  "city": "<Content>",
-  "state": "<Content>",
-  "zip": "<Content>",
-  "borrow": "<Content>",
-  "owner_of_record": "<Content>",
-  "county": "<Content>"
+  "property_address":           "<Content>",
+  "city":                       "<Content>",
+  "state":                      "<Content>",
+  "zip_code":                   "<Content>",
+  "borrower":                   "<Content>",
+  "owner_of_public_record":     "<Content>",
+  "county":                     "<Content>",
+  "legal_description":          "<Content>",
+  "assessor_parcel_num":        "<Content>",
+  "tax_year":                   "<Content>",
+  "r_e_taxes":                  "<Content>",
+  "neighborhood_name":          "<Content>",
+  "map_reference":              "<Content>",
+  "census_tract":               "<Content>",
+  "occupant":                   "<Content>",
+  "special_assessmants":        "<Content>",
+  "pud":                        "<Content>",
+  "hoa":                        "<Content>",
+  "hoa_pay_freq":               "<Content>",
+  "property_rights_appraised":  "<Content>",
+  "assignment_type":            "<Content>",
+  "lender_client":              "<Content>",
+  "l_c_address":                "<Content>",
+  "for_sale_yes_no":            "<Content>",
+  "report_data_sources":        "<Content>"
 }
 ```
 
@@ -71,14 +89,32 @@ never be less than 1 when running this application):
 ```JSON
 [
   {
-    "id": -1,
-    "address": "<Content>",
-    "city": "<Content>",
-    "state": "<Content>",
-    "zip": "<Content>",
-    "borrow": "<Content>",
-    "owner_of_record": "<Content>",
-    "county": "<Content>"
+    "id":                         -1,
+    "property_address":           "<Content>",
+    "city":                       "<Content>",
+    "state":                      "<Content>",
+    "zip_code":                   "<Content>",
+    "borrower":                   "<Content>",
+    "owner_of_public_record":     "<Content>",
+    "county":                     "<Content>",
+    "legal_description":          "<Content>",
+    "assessor_parcel_num":        "<Content>",
+    "tax_year":                   "<Content>",
+    "r_e_taxes":                  "<Content>",
+    "neighborhood_name":          "<Content>",
+    "map_reference":              "<Content>",
+    "census_tract":               "<Content>",
+    "occupant":                   "<Content>",
+    "special_assessmants":        "<Content>",
+    "pud":                        "<Content>",
+    "hoa":                        "<Content>",
+    "hoa_pay_freq":               "<Content>",
+    "property_rights_appraised":  "<Content>",
+    "assignment_type":            "<Content>",
+    "lender_client":              "<Content>",
+    "l_c_address":                "<Content>",
+    "for_sale_yes_no":            "<Content>",
+    "report_data_sources":        "<Content>"
   }
 ]
 ```
@@ -90,14 +126,32 @@ of the format (Note: for example purposes, the id field has the value -1, but
 should never be less than 1 when running this application):  
 ```JSON
 {
-  "id": -1,
-  "address": "<Content>",
-  "city": "<Content>",
-  "state": "<Content>",
-  "zip": "<Content>",
-  "borrow": "<Content>",
-  "owner_of_record": "<Content>",
-  "county": "<Content>"
+  "id":                         -1,
+  "property_address":           "<Content>",
+  "city":                       "<Content>",
+  "state":                      "<Content>",
+  "zip_code":                   "<Content>",
+  "borrower":                   "<Content>",
+  "owner_of_public_record":     "<Content>",
+  "county":                     "<Content>",
+  "legal_description":          "<Content>",
+  "assessor_parcel_num":        "<Content>",
+  "tax_year":                   "<Content>",
+  "r_e_taxes":                  "<Content>",
+  "neighborhood_name":          "<Content>",
+  "map_reference":              "<Content>",
+  "census_tract":               "<Content>",
+  "occupant":                   "<Content>",
+  "special_assessmants":        "<Content>",
+  "pud":                        "<Content>",
+  "hoa":                        "<Content>",
+  "hoa_pay_freq":               "<Content>",
+  "property_rights_appraised":  "<Content>",
+  "assignment_type":            "<Content>",
+  "lender_client":              "<Content>",
+  "l_c_address":                "<Content>",
+  "for_sale_yes_no":            "<Content>",
+  "report_data_sources":        "<Content>"
 }
 ```
 
