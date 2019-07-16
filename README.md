@@ -171,7 +171,7 @@ should never be less than 1 when running this application):
 #### Searching by ID
 It is a GET request using the route `/list/quert/byID/` with a URL query string.
 The id is used to identify which appraisal is to be found. (Note: for example purposes, the id field has the value -1, but should never be less than 1 when running this application):  
-`?id=-1`
+`?id=-1`  
 For an example of the fetch call:
 ```javascript
 fetch( hosturl + '/list/query/byID/' + '?id=' + -1, {
