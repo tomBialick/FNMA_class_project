@@ -8,11 +8,11 @@ Members:
 
 ## Before you run
 Make sure you have set up everything  
-  * Such as postgresql (database, user, user roles, and table)
+  * Postgresql (database, user, user roles, and table)
   * Run npm install (to verify all dependencies are installed)  
   * config.json values are not default (host_info, database)  
-  * change the start_server.sh file to be set for the right OS
-  * change line 10 in public/index.html to reflect the correct host url
+  * Change the start_server.sh file to be set for the right OS
+  * Change line 10 in public/index.html to reflect the correct host url
 
 
 ## Running
@@ -111,3 +111,10 @@ should never be less than 1 when running this application):
   "id": -1,
 }
 ```
+
+### Searching For an Appraisal
+
+#### Searching by ID
+It is a GET request using the route `/list/quert/byID/` with a URL query string.
+The id is used to identify which appraisal is to be found. (Note: for example purposes, the id field has the value -1, but should never be less than 1 when running this application):  
+`?id=-1`
