@@ -17,6 +17,13 @@ const db = pgp({
   port: conf_data["database"]["port"],
 });
 
+const fs = require('fs');
+const AWS = require('aws-sdk');
+const s3 = new AWS.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: 'us-east-2'
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -199,6 +206,30 @@ router.delete('/house/delete', function(req, res, next) {
     res.status(400).send("Bad Request");
   })
 });
+
+/* POST a file to the s3 bucket */
+router.post('/file', function(req, res, next) {
+  //let keyName = "test_upload_1";
+  //let id = 1;//req.body.id;
+  console.log(req.body);
+  res.status(200).send("Ok");
+  /*fs.readFile(req.body, (err, data) => {
+     if (err) throw err;
+     const params = {
+         Bucket: conf_data["s3"]["bucketName"], // pass your bucket name
+         Key: keyName, // file will be saved as clippybucket2019/<keyName>
+         Body: JSON.stringify(data, null, 2)
+     };
+     s3.upload(params, function(s3Err, data) {
+         if (s3Err) throw s3Err
+         let file_location = data.Location;
+         db.query( 'UPDATE APPRAISAL SET ATTACHMENT_NAME = $2, ATTACHMENT_LOCATION  $3 WHERE ID = $1', [id, keyName, file_location]).then(results => {
+         console.log(`File uploaded successfully at ${data.Location}`)
+         res.status(200).send("File successully uploaded");
+     });
+   });
+ });*/
+})
 
 router.get('/metrics', function(req, res, next) {
   res.status(200).send("Ok");

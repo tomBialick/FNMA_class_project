@@ -176,6 +176,20 @@
             document.body.innerHTML += regexStr; // appends the result to the body of the HTML document
           })
         })
+        document.getElementById("demo-house-file-submit").addEventListener("click", function () {
+          let dataFile = document.getElementById("demo-house-file")
+          let form = new FormData();
+          form.append('id', 1);
+          form.append('file', dataFile.files[0])
+          //console.log(dataFile.files[0])
+          fetch( hosturl + '/file', {
+            method: 'POST',
+            /*headers: {
+              'Content-Type': 'application/json'
+            },*/
+            body: form,
+          })
+        })
       }
   </script>
 </head>
@@ -257,7 +271,13 @@
     <button id="demo-house-IDQuery">Search</button>
   </form>
 
-  <h5>Too add another record after listing all Appraisals, refresh the page</h5>
+  <h4>Demo Submit A File</h4>
+  <form onsubmit="return false;" id="demo-house-file-form">
+    <input id="demo-house-file" type="file"><br>
+    <button id="demo-house-file-submit">Submit</button>
+  </form>
+
+  <h5>To add another record after listing all Appraisals, refresh the page</h5>
   <button id="demo-getappraisals">Get All Appraisals</button><br>
 </body>
 
