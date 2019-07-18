@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const url = require('url');
 const querystring = require('querystring');
+const fileUpload = require('express-fileupload');
 var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
@@ -15,6 +16,7 @@ app.use(logger('dev'));
 //app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileUpload());
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));

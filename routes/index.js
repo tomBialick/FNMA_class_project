@@ -209,26 +209,37 @@ router.delete('/house/delete', function(req, res, next) {
 
 /* POST a file to the s3 bucket */
 router.post('/file', function(req, res, next) {
-  //let keyName = "test_upload_1";
-  //let id = 1;//req.body.id;
-  console.log(req.body);
-  res.status(200).send("Ok");
-  /*fs.readFile(req.body, (err, data) => {
-     if (err) throw err;
-     const params = {
-         Bucket: conf_data["s3"]["bucketName"], // pass your bucket name
-         Key: keyName, // file will be saved as clippybucket2019/<keyName>
-         Body: JSON.stringify(data, null, 2)
-     };
-     s3.upload(params, function(s3Err, data) {
-         if (s3Err) throw s3Err
-         let file_location = data.Location;
-         db.query( 'UPDATE APPRAISAL SET ATTACHMENT_NAME = $2, ATTACHMENT_LOCATION  $3 WHERE ID = $1', [id, keyName, file_location]).then(results => {
-         console.log(`File uploaded successfully at ${data.Location}`)
-         res.status(200).send("File successully uploaded");
+  if (Object.keys(req.files).length == 0) {
+    return res.status(400).send('Error uploading file');
+  }
+  let fileObj = req.files.file;
+  let fileName = fileObj.name;
+  let id = req.body.id;
+  let keyName = id + "_" + fileName;
+  console.log(keyName);
+  fileObj.mv('./resources/' + fileName, function(err) {
+    if (err) {
+      console.log(err)
+      res.status(500).send("Internal Error Storing File");
+    }
+    let file_loc = './resources/' + fileName;
+    fs.readFile(file_loc, (err, data) => {
+       if (err) throw err;
+       const params = {
+           Bucket: conf_data["s3"]["bucketName"], // pass your bucket name
+           Key: keyName, // file will be saved as clippybucket2019/<keyName>
+           Body: JSON.stringify(data, null, 2)
+       };
+       s3.upload(params, function(s3Err, data) {
+           if (s3Err) throw s3Err
+           let file_location = data.Location;
+           db.query( 'UPDATE APPRAISAL SET ATTACHMENT_NAME = $2, ATTACHMENT_LOCATION  $3 WHERE ID = $1', [id, keyName, file_location]).then(results => {
+           console.log(`File uploaded successfully at ${data.Location}`)
+           res.status(200).send("File successully uploaded");
+       });
      });
    });
- });*/
+  });
 })
 
 router.get('/metrics', function(req, res, next) {

@@ -176,10 +176,11 @@
             document.body.innerHTML += regexStr; // appends the result to the body of the HTML document
           })
         })
-        document.getElementById("demo-house-file-submit").addEventListener("click", function () {
+        document.getElementById("demo-house-file-submit").addEventListener("click", function (ev) {
+          ev.preventDefault();
           let dataFile = document.getElementById("demo-house-file")
           let form = new FormData();
-          form.append('id', 1);
+          form.append('id', document.getElementById("demo-house-file-id").value);
           form.append('file', dataFile.files[0])
           //console.log(dataFile.files[0])
           fetch( hosturl + '/file', {
@@ -187,7 +188,8 @@
             /*headers: {
               'Content-Type': 'application/json'
             },*/
-            body: form,
+            mode: 'no-cors',
+            body: form
           })
         })
       }
@@ -273,7 +275,8 @@
 
   <h4>Demo Submit A File</h4>
   <form onsubmit="return false;" id="demo-house-file-form">
-    <input id="demo-house-file" type="file"><br>
+    ID <input id="demo-house-file-id" type="text"><br>
+    <input id="demo-house-file" name="testUpload" type="file"><br>
     <button id="demo-house-file-submit">Submit</button>
   </form>
 
