@@ -203,6 +203,21 @@
             document.body.appendChild(img);
           })
         })
+        document.getElementById("demo-get-video-submit").addEventListener("click", function (ev) {
+          ev.preventDefault();
+            fetch( hosturl + '/download' + '?id=' + document.getElementById('demo-get-video-id').value, {
+            method: 'GET',
+            mode: 'no-cors'
+          }).then(response => response.json()).then((responseJson) => {
+            var img = document.createElement('video');
+            img.src = responseJson.url;
+            img.autoplay=true;
+            img.loop = true;
+            img.height = "300";
+            img.width = "300";
+            document.body.appendChild(img);
+          })
+        })
       }
   </script>
 </head>
@@ -291,14 +306,22 @@
     <button id="demo-house-file-submit">Submit</button>
   </form>
 
-  <h4>Demo Get File</h4>
+  <h4>Demo Get Image</h4>
   <form onsubmit="return false;" id="demo-get-file-form">
     ID <input id="demo-get-file-id" type="text"><br>
     <button id="demo-get-file-submit">Submit</button>
   </form>
 
+  <h4>Demo Get Video</h4>
+  <form onsubmit="return false;" id="demo-get-video-form">
+    ID <input id="demo-get-video-id" type="text"><br>
+    <button id="demo-get-video-submit">Submit</button>
+  </form>
+
   <h5>To add another record after listing all Appraisals, refresh the page</h5>
   <button id="demo-getappraisals">Get All Appraisals</button><br>
+
+  <h1> Data Dump </h1>
 </body>
 
 </html>
