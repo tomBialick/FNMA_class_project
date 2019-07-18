@@ -9,8 +9,8 @@
       //CHANGE THIS ON AWS!!!!
       var hosturl = 'http://localhost:3000'
       //var hosturl = 'http://ec2-54-89-250-141.compute-1.amazonaws.com:3000'
-      document.getElementById("demo-house-submit").addEventListener("click", function () {
-
+      document.getElementById("demo-house-submit").addEventListener("click", function (ev) {
+        ev.preventDefault();
         var data = {
           "property_address": document.getElementById('demo-address').value,
           "city": document.getElementById('demo-city').value,
@@ -46,8 +46,8 @@
               'Content-Type': 'application/json',
           },
           body: data_json
-        }).then(response => {
-          location.reload();
+        }).then(response => response.json()).then((responseJson) => {
+          console.log(responseJson.body.id)
         })
       })
 
@@ -201,7 +201,7 @@
   <p>Looks like you are trying to reach an unfinished page. Would you like some help?</p>
 
   <h4>Demo House Form</h4>
-  <form id="demo-house-form">
+  <form onsubmit="return false;" id="demo-house-form">
     Address <input id="demo-address" type="text"><br>
     City <input id="demo-city" type="text"><br>
     State <input id="demo-state" type="text"><br>

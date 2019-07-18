@@ -44,7 +44,7 @@ fetch( hosturl + '/house', {
   },
   body: data_json
 }).then(response => {
-  location.reload();
+  //Do something...
 })
 ```
 Both examples are taken from FNMA_class_project/public/index.html
@@ -81,6 +81,20 @@ should be in JSON of the format:
   "report_data_sources":        "<Content>"
 }
 ```
+It gives back a JSON response of the ID of the created appraisal, which can be
+accessed in a way similar to the following:  
+```javascript
+fetch( hosturl + '/house', {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json',
+  },
+  body: data_json
+}).then(response => response.json()).then((responseJson) => {
+  console.log(responseJson.body.id)
+})
+```
+
 
 ### Getting a list of all Appraisals
 It is a GET request using the route `/list`. The returned body should be in JSON
