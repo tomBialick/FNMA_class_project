@@ -129,7 +129,9 @@ never be less than 1 when running this application):
     "lender_client":              "<Content>",
     "l_c_address":                "<Content>",
     "for_sale_yes_no":            "<Content>",
-    "report_data_sources":        "<Content>"
+    "report_data_sources":        "<Content>",
+    "attachment_name":            "<Content>",
+    "attachment_location":        "<Content>"
   }
 ]
 ```
@@ -173,6 +175,31 @@ should never be less than 1 when running this application):
 ### Deleting an Appraisal
 It is a DELETE request using the route `/house/delete`. The id is used to identify
 which appraisal is to be deleted. The body given in the request should be in JSON
+of the format (Note: for example purposes, the id field has the value -1, but
+should never be less than 1 when running this application):  
+```JSON
+{
+  "id": -1
+}
+```
+
+### Uploading a File to an Appraisal
+It is a POST request using the route `/file`. The id is used to identify
+which appraisal the file is to be attached to. The body given in the request should be in JSON of the format (Note: for example purposes, the id field has the value -1, but
+should never be less than 1 when running this application):  
+```JSON
+"body": {
+  "id": -1
+  },
+"files": {
+  "file": "<Content>"
+  }
+}
+```
+
+### Downloading a File
+It is a POST request using the route `/download`. The id is used to identify
+which appraisal's file is to be found. The body given in the request should be in JSON
 of the format (Note: for example purposes, the id field has the value -1, but
 should never be less than 1 when running this application):  
 ```JSON

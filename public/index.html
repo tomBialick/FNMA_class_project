@@ -203,19 +203,20 @@
             document.body.appendChild(img);
           })
         })
+
         document.getElementById("demo-get-video-submit").addEventListener("click", function (ev) {
           ev.preventDefault();
             fetch( hosturl + '/download' + '?id=' + document.getElementById('demo-get-video-id').value, {
             method: 'GET',
             mode: 'no-cors'
           }).then(response => response.json()).then((responseJson) => {
-            var img = document.createElement('video');
-            img.src = responseJson.url;
-            img.autoplay=true;
-            img.loop = true;
-            img.height = "300";
-            img.width = "300";
-            document.body.appendChild(img);
+            var vid = document.createElement('video');
+            vid.src = responseJson.url;
+            vid.autoplay=true;
+            vid.loop = true;
+            vid.height = "300";
+            vid.width = "300";
+            document.body.appendChild(vid);
           })
         })
       }

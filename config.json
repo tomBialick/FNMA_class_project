@@ -6,8 +6,8 @@
   },
   "database" : {
     "host": "localhost",
-    "db": "downloadingfiletestdb",
-    "username": "shannondarroch",
+    "db": "mydb",
+    "username": "myuser",
     "password": "",
     "port": "5432",
 
