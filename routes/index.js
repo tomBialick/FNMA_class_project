@@ -263,6 +263,20 @@ router.post('/file', function(req, res, next) {
 });
 })
 
+/* GET the image from an appraisal */
+router.get( '/download', function(req, res, next) {
+  var queryItem = req.query.id;
+
+  db.query( 'SELECT ATTACHMENT_LOCATION FROM APPRAISAL WHERE ID = $1', [queryItem]).then(results => {
+    let file_loc = results[0].attachment_location;
+    res.status(200).send({url: file_loc})
+  }).catch(error => {
+    console.log('ERROR:', error);
+    res.status(400).send("Bad Request");
+  })
+})
+
+
 router.get('/metrics', function(req, res, next) {
   res.status(200).send("Ok");
 });

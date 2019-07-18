@@ -182,7 +182,6 @@
           let form = new FormData();
           form.append('id', document.getElementById("demo-house-file-id").value);
           form.append('file', dataFile.files[0])
-          //console.log(dataFile.files[0])
           fetch( hosturl + '/file', {
             method: 'POST',
             /*headers: {
@@ -190,6 +189,18 @@
             },*/
             mode: 'no-cors',
             body: form
+          })
+        })
+
+        document.getElementById("demo-get-file-submit").addEventListener("click", function (ev) {
+          ev.preventDefault();
+            fetch( hosturl + '/download' + '?id=' + document.getElementById('demo-get-file-id').value, {
+            method: 'GET',
+            mode: 'no-cors'
+          }).then(response => response.json()).then((responseJson) => {
+            var img = document.createElement('img');
+            img.src = responseJson.url;
+            document.body.appendChild(img);
           })
         })
       }
@@ -278,6 +289,12 @@
     ID <input id="demo-house-file-id" type="text"><br>
     <input id="demo-house-file" name="testUpload" type="file"><br>
     <button id="demo-house-file-submit">Submit</button>
+  </form>
+
+  <h4>Demo Get File</h4>
+  <form onsubmit="return false;" id="demo-get-file-form">
+    ID <input id="demo-get-file-id" type="text"><br>
+    <button id="demo-get-file-submit">Submit</button>
   </form>
 
   <h5>To add another record after listing all Appraisals, refresh the page</h5>
