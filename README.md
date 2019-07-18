@@ -12,7 +12,8 @@ Make sure you have set up everything
   * Run npm install (to verify all dependencies are installed)  
   * config.json values are not default (host_info, database)  
   * Change the start_server.sh file to be set for the right OS
-  * Change line 10 in public/index.html to reflect the correct host url
+  * Change line 10 in public/index.html to reflect the correct host url  
+  * Change lines 24 and 25 in routes/index.js to have the correct AWS access keys
 
 
 ## Running

@@ -19,6 +19,7 @@ const db = pgp({
 
 const fs = require('fs');
 const AWS = require('aws-sdk');
+//CHANGE THESE KEYS FOR S3 ACCESS
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -221,7 +222,6 @@ router.post('/file', function(req, res, next) {
   let fileName = fileObj.name;
   let id = req.body.id;
   let keyName = conf_data["s3"]["folder"] + '/' + id + "_" + fileName;
-  console.log(keyName);
   fileObj.mv('./resources/' + fileName, function(err) {
     if (err) {
       console.log(err)
@@ -242,12 +242,16 @@ router.post('/file', function(req, res, next) {
         res.status(500).send("Error Adding File to S3 Bucket");
       }
       else {
-        console.log(data)
         let file_location = data.Location;
         db.query( 'UPDATE APPRAISAL SET ATTACHMENT_NAME = $2, ATTACHMENT_LOCATION = $3 WHERE ID = $1', [id, keyName, file_location])
         .then(results => {
           console.log(`File uploaded successfully at ${data.Location}`)
-          res.status(200).send("File successully uploaded");
+          fs.unlink(file_loc, (err) => {
+            if (err) {
+              console.log('ERROR:', err);
+            }
+            res.status(200).send("File successully uploaded");
+          })
         })
         .catch(error => {
           console.log('ERROR:', error);
