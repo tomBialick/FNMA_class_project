@@ -36,14 +36,14 @@ NC='\033[0m' # No Color
 # echo -e "Waiting for postgreSQL to ${RED}stop${NC}"
 # echo -e "${GREEN}=======================================================================================${NC}"
 # echo ""
-# pg_ctl -D /usr/local/var/postgres stop
+# brew services stop postgresql
 # sleep 3s
 # echo ""
 # echo -e "${GREEN}=======================================================================================${NC}"
 # echo -e "${GREEN}Starting postgreSQL${NC}"
 # echo -e "${GREEN}=======================================================================================${NC}"
 # echo ""
-# pg_ctl -D /usr/local/var/postgres start
+# brew services start postgresql
 # sleep 3s
 # echo ""
 # echo -e "${GREEN}=======================================================================================${NC}"
