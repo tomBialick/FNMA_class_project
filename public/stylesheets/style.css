@@ -1,6 +1,38 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Consolas", Helvetica, Arial, sans-serif;
+  background-color: #F8AF90;
+}
+
+p {
+    color: #FFFFFF;
+    font: 19px "Consolas", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  color: #FFFFFF;
+  font: 60px "Consolas", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+h2 {
+  color: #FFFFFF;
+  font: 30px "Consolas", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  font: 19px "Consolas", Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
+}
+
+h4 {
+  color: #FFFFFF;
+}
+
+form {
+  padding: 50px;
+  background-color: #F7D6B5;
 }
 
 a {

@@ -21,8 +21,8 @@ const fs = require('fs');
 const AWS = require('aws-sdk');
 //CHANGE THESE KEYS FOR S3 ACCESS
 const s3 = new AWS.S3({
-  accessKeyId: '',
-  secretAccessKey: '',
+  accessKeyId: 'AKIA5WJYHNEM26ZMK67Y',
+  secretAccessKey: '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',
   region: 'us-east-2'
 });
 
