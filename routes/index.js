@@ -215,7 +215,7 @@ router.post('/file', function(req, res, next) {
   let fileObj = req.files.file;
   let fileName = fileObj.name;
   let id = req.body.id;
-  let keyName = id + "_" + fileName;
+  let keyName = conf_data["s3"]["folder"] + '/' + id + "_" + fileName;
   console.log(keyName);
   fileObj.mv('./resources/' + fileName, function(err) {
     if (err) {
@@ -228,18 +228,30 @@ router.post('/file', function(req, res, next) {
        const params = {
            Bucket: conf_data["s3"]["bucketName"], // pass your bucket name
            Key: keyName, // file will be saved as clippybucket2019/<keyName>
-           Body: JSON.stringify(data, null, 2)
+           ACL: 'public-read',
+           Body: data
        };
-       s3.upload(params, function(s3Err, data) {
-           if (s3Err) throw s3Err
-           let file_location = data.Location;
-           db.query( 'UPDATE APPRAISAL SET ATTACHMENT_NAME = $2, ATTACHMENT_LOCATION  $3 WHERE ID = $1', [id, keyName, file_location]).then(results => {
-           console.log(`File uploaded successfully at ${data.Location}`)
-           res.status(200).send("File successully uploaded");
-       });
-     });
-   });
+    s3.upload(params, function(s3Err, data) {
+      if (s3Err){
+        console.log('ERROR:', s3Err);
+        res.status(500).send("Error Adding File to S3 Bucket");
+      }
+      else {
+        console.log(data)
+        let file_location = data.Location;
+        db.query( 'UPDATE APPRAISAL SET ATTACHMENT_NAME = $2, ATTACHMENT_LOCATION = $3 WHERE ID = $1', [id, keyName, file_location])
+        .then(results => {
+          console.log(`File uploaded successfully at ${data.Location}`)
+          res.status(200).send("File successully uploaded");
+        })
+        .catch(error => {
+          console.log('ERROR:', error);
+          res.status(500).send("Error Adding File to Database");
+        });
+      }
+    });
   });
+});
 })
 
 router.get('/metrics', function(req, res, next) {

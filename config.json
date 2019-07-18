@@ -16,6 +16,7 @@
     "_username": "ec2-user"
   },
   "s3": {
-    "bucketName": "clippybucket2019"
+    "bucketName": "clippybucket2019",
+    "folder": "Files"
   }
 }
