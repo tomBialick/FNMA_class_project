@@ -52,8 +52,8 @@
       })
 
 
-      document.getElementById("demo-house-update").addEventListener("click", function () {
-
+      document.getElementById("demo-house-update").addEventListener("click", function (ev) {
+        ev.preventDefault();
         var data = {
           "id": document.getElementById('demo-update-id').value,
           "property_address": document.getElementById('demo-update-address').value,
@@ -95,8 +95,8 @@
         })
       })
 
-      document.getElementById("demo-house-delete").addEventListener("click", function () {
-
+      document.getElementById("demo-house-delete").addEventListener("click", function (ev) {
+        ev.preventDefault();
         var data = {
           "id": document.getElementById('demo-delete-id').value,
         }
@@ -113,7 +113,8 @@
         })
       })
 
-      document.getElementById("demo-getappraisals").addEventListener("click", function () {
+      document.getElementById("demo-getappraisals").addEventListener("click", function (ev) {
+        ev.preventDefault();
         fetch( hosturl + '/list', {
           method: 'GET',
           headers: {
@@ -144,8 +145,8 @@
           document.body.innerHTML += regexStr; // appends the result to the body of the HTML document
         })
       })
-      document.getElementById("demo-house-IDQuery").addEventListener("click", function () {
-
+      document.getElementById("demo-house-IDQuery").addEventListener("click", function (ev) {
+        ev.preventDefault();
           fetch( hosturl + '/list/query/byID/' + '?id=' + document.getElementById('demo-query-id').value, {
           method: 'GET',
           headers: {
@@ -226,6 +227,7 @@
 <body>
   <h1>Clippy</h1>
   <p>Looks like you are trying to reach an unfinished page. Would you like some help?</p>
+  <h5>Between POST actions, refresh the page</h5>
 
   <h4>Demo House Form</h4>
   <form onsubmit="return false;" id="demo-house-form">
@@ -258,7 +260,7 @@
   </form>
 
   <h4>Demo Update Form</h4>
-  <form id="demo-house-update-form">
+  <form onsubmit="return false;" id="demo-house-update-form">
     ID <input id="demo-update-id" type="text"><br>
     Address <input id="demo-update-address" type="text"><br>
     City <input id="demo-update-city" type="text"><br>
@@ -289,7 +291,7 @@
   </form>
 
   <h4>Demo Delete Form</h4>
-  <form id="demo-house-delete-form">
+  <form onsubmit="return false;" id="demo-house-delete-form">
     ID <input id="demo-delete-id" type="text"><br>
     <button id="demo-house-delete">Delete</button>
   </form>
@@ -319,7 +321,6 @@
     <button id="demo-get-video-submit">Submit</button>
   </form>
 
-  <h5>To add another record after listing all Appraisals, refresh the page</h5>
   <button id="demo-getappraisals">Get All Appraisals</button><br>
 
   <h1> Data Dump </h1>
